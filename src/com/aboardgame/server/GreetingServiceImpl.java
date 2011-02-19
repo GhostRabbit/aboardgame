@@ -13,11 +13,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 
 	public String greetServer(String input) throws IllegalArgumentException {
 		// Verify that the input is valid. 
-		if (!FieldVerifier.isValidName(input)) {
+		if (!FieldVerifier.isValidGuess(input)) {
 			// If the input is not valid, throw an IllegalArgumentException back to
 			// the client.
-			throw new IllegalArgumentException(
-					"Name must be at least 4 characters long");
+//			throw new IllegalArgumentException(
+//					"Please enter a number between 0 and 9");
 		}
 
 		String serverInfo = getServletContext().getServerInfo();
@@ -26,9 +26,23 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		// Escape data from the client to avoid cross-site script vulnerabilities.
 		input = escapeHtml(input);
 		userAgent = escapeHtml(userAgent);
+		
+		return numberGuess(Integer.parseInt(input));
+//		return "Hello, " + input + "!<br><br>I am running " + serverInfo
+//				+ ".<br><br>It looks like you are using:<br>" + userAgent;
+	}
 
-		return "Hello, " + input + "!<br><br>I am running " + serverInfo
-				+ ".<br><br>It looks like you are using:<br>" + userAgent;
+	private String numberGuess(int guess) {
+		int correct = 3;
+		String answer;
+		if (guess == correct) {
+			answer = "Correct!";
+		} else if (guess > correct) {
+			answer = "Too high";
+		} else {
+			answer = "Too low";
+		}
+		return answer;
 	}
 
 	/**

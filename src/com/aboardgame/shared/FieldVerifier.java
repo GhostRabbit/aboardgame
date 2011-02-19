@@ -1,5 +1,6 @@
 package com.aboardgame.shared;
 
+
 /**
  * <p>
  * FieldVerifier validates that the name the user enters is valid.
@@ -30,13 +31,21 @@ public class FieldVerifier {
 	 * that usernames, passwords, email addresses, URLs, and other fields have the
 	 * proper syntax.
 	 * 
-	 * @param name the name to validate
+	 * @param guess the name to validate
 	 * @return true if valid, false if invalid
 	 */
-	public static boolean isValidName(String name) {
-		if (name == null) {
+	public static boolean isValidGuess(String guess) {
+		if (guess == null) {
 			return false;
 		}
-		return name.length() > 3;
+		try {
+			int n = Integer.parseInt(guess);
+			if (n < 0 || n > 9) {
+				return false;
+			}
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
 	}
 }

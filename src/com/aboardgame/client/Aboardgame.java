@@ -41,7 +41,7 @@ public class Aboardgame implements EntryPoint {
 	public void onModuleLoad() {
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
-		nameField.setText("GWT User");
+		nameField.setText("guess");
 		final Label errorLabel = new Label();
 
 		// We can add style names to widgets
@@ -68,7 +68,7 @@ public class Aboardgame implements EntryPoint {
 		final HTML serverResponseLabel = new HTML();
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
-		dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
+		dialogVPanel.add(new HTML("<b>Sending guess to the server:</b>"));
 		dialogVPanel.add(textToServerLabel);
 		dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
 		dialogVPanel.add(serverResponseLabel);
@@ -110,8 +110,8 @@ public class Aboardgame implements EntryPoint {
 				// First, we validate the input.
 				errorLabel.setText("");
 				String textToServer = nameField.getText();
-				if (!FieldVerifier.isValidName(textToServer)) {
-					errorLabel.setText("Please enter at least four characters");
+				if (!FieldVerifier.isValidGuess(textToServer)) {
+					errorLabel.setText("Please enter a number (0-9)");
 					return;
 				}
 
@@ -122,6 +122,7 @@ public class Aboardgame implements EntryPoint {
 				greetingService.greetServer(textToServer,
 						new AsyncCallback<String>() {
 							public void onFailure(Throwable caught) {
+								caught.printStackTrace();
 								// Show the RPC error message to the user
 								dialogBox
 										.setText("Remote Procedure Call - Failure");
