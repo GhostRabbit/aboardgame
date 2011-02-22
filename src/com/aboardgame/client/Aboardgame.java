@@ -86,7 +86,7 @@ public class Aboardgame implements EntryPoint {
 		});
 
 		// Create a handler for the sendButton and nameField
-		class MyHandler implements ClickHandler, KeyUpHandler {
+		class AboardgameHandler implements ClickHandler, KeyUpHandler {
 			/**
 			 * Fired when the user clicks on the sendButton.
 			 */
@@ -146,7 +146,7 @@ public class Aboardgame implements EntryPoint {
 		}
 
 		// Add a handler to send the name to the server
-		MyHandler handler = new MyHandler();
+		AboardgameHandler handler = new AboardgameHandler();
 		sendButton.addClickHandler(handler);
 		nameField.addKeyUpHandler(handler);
 	}
