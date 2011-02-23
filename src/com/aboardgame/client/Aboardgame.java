@@ -1,5 +1,6 @@
 package com.aboardgame.client;
 
+import com.aboardgame.client.event.BoardClickHandlerImpl;
 import com.aboardgame.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -51,7 +52,9 @@ public class Aboardgame implements EntryPoint {
 		// Use RootPanel.get() to get the entire body element
 		RootPanel.get("nameFieldContainer").add(nameField);
 		RootPanel.get("sendButtonContainer").add(sendButton);
-		RootPanel.get("errorLabelContainer").add(errorLabel);
+        RootPanel.get("errorLabelContainer").add(errorLabel);
+        
+        doSeriousInit();
 
 		// Focus the cursor on the name field when the app loads
 		nameField.setFocus(true);
@@ -150,4 +153,10 @@ public class Aboardgame implements EntryPoint {
 		sendButton.addClickHandler(handler);
 		nameField.addKeyUpHandler(handler);
 	}
+
+    private void doSeriousInit() {
+        TicTacToeBoard board = new TicTacToeBoard();
+        RootPanel.get("boardContainer").add(board);
+        board.addClickHandler(new BoardClickHandlerImpl());
+    }
 }
