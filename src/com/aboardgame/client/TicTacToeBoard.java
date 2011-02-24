@@ -1,36 +1,33 @@
 package com.aboardgame.client;
 
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class TicTacToeBoard extends Composite {
 
-    private final Button[][] buttons = new Button[3][3];
+    private final TicTacToeCell[][] cells = new TicTacToeCell[3][3];
+    private VerticalPanel panel;
 
     public TicTacToeBoard() {
-        VerticalPanel vPanel = new VerticalPanel();
-        initWidget(vPanel);
-        for (int i = 0; i < buttons.length; i++) {
+        panel = new VerticalPanel();
+        initWidget(panel);
+        for (int i = 0; i < cells.length; i++) {
             HorizontalPanel hPanel = new HorizontalPanel();
-            vPanel.add(hPanel);
-            for (int j = 0; j < buttons[i].length; j++) {
-                String label = "" + (i * buttons.length + j);
-                Button button = new Button(label);
-                buttons[i][j] = button;
-                button.setSize("50px", "50px");
-                hPanel.add(button);
+            panel.add(hPanel);
+            for (int j = 0; j < cells[i].length; j++) {
+                TicTacToeCell cell = new TicTacToeCell();
+                hPanel.add(cell);
+                cells[i][j] = cell;
             }
         }
     }
+    
+    public void addStyleName(String styleName) {
+        panel.addStyleName(styleName);
+    }
 
-    public void addClickHandler(ClickHandler handler) {
-        for (int i = 0; i < buttons.length; i++) {
-            for (int j = 0; j < buttons[i].length; j++) {
-                buttons[i][j].addClickHandler(handler);
-            }
-        }
+    public TicTacToeCell getCell(int row, int col) {
+        return cells[row][col];
     }
 }

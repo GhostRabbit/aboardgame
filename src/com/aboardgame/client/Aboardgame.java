@@ -156,7 +156,19 @@ public class Aboardgame implements EntryPoint {
 
     private void doSeriousInit() {
         TicTacToeBoard board = new TicTacToeBoard();
+        board.addStyleName("TicTacToeBoard");
         RootPanel.get("boardContainer").add(board);
-        board.addClickHandler(new BoardClickHandlerImpl());
+        BoardClickHandlerImpl clickHandler = new BoardClickHandlerImpl();
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String label = "" + (col + row * 3);
+                TicTacToeCell cell = board.getCell(row, col);
+                cell.setStylePrimaryName("TicTacToeCell");
+                cell.setText(label);
+                cell.addClickHandler(clickHandler);
+            }
+        }
     }
+    
+
 }
