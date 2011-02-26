@@ -1,11 +1,12 @@
 package com.aboardgame.client;
 
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.ui.IsWidget;
 
-public class TicTacToeCell extends Button {
+public interface TicTacToeCell extends HasClickHandlers, IsWidget {
 
-    public TicTacToeCell(int id) {
-        setStylePrimaryName("TicTacToeCell");
-        setText("" + id);
-    }
+    int getPosition();
+
+    void showState(CellState state);
+
 }

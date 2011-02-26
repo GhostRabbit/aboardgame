@@ -1,25 +1,31 @@
 package com.aboardgame.client;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.io.PrintStream;
-
 import org.junit.Test;
+
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class TicTacToePresenterTest {
 
     @Test
-    public void creation() {
-        TicTacToeBoard board = mock(TicTacToeBoard.class);
-        assertNotNull(new TicTacToePresenter(board));
+    public void initialCellStateShouldObeyModel() {
+        TicTacToeCell cell = mock(TicTacToeCell.class);
+        TicTacToeModel model = mock (TicTacToeModel.class);
+        when(model.getState(cell)).thenReturn(CellState.RING);
+        TicTacToePresenter presenter = new TicTacToePresenter(model);
+        presenter.initCell(cell);
+        verify(cell).showState(CellState.RING);
     }
     
     @Test
-    public void sayHello() {
-        PrintStream out = mock(PrintStream.class);
-        new TicTacToePresenter(null).sayHello(out);
-        verify(out).println("Mupp");
+    public void cellClickShouldShowNextStateFromModel() {
+        TicTacToeCell cell = mock(TicTacToeCell.class);
+        ClickEvent event = mock(ClickEvent.class);
+        when(event.getSource()).thenReturn(cell);
+        TicTacToeModel model = mock(TicTacToeModel.class);
+        when(model.nextState(cell)).thenReturn(CellState.CROSS);
+        new TicTacToePresenter(model).onCellClick(event);
+        verify(cell).showState(CellState.CROSS);
     }
-
 }

@@ -1,5 +1,7 @@
 package com.aboardgame.client;
 
-public interface TicTacToeBoard {
+import com.google.gwt.user.client.ui.IsWidget;
+
+public interface TicTacToeBoard extends IsWidget {
 
 }
