@@ -1,0 +1,20 @@
+.TicTacToeBoard {
+  border-style: solid;
+  border-width: medium;
+  border-color: #aaaaaa;
+}
+
+.TicTacToeCell {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.TicTacToeCell-RING {
+  background-image:url('images/ring.png');
+}
+
+.TicTacToeCell-CROSS {
+  background-image:url('images/cross.png');
+}
+  
