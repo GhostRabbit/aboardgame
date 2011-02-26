@@ -1,5 +1,6 @@
 package com.aboardgame.client;
 
+import com.aboardgame.client.presenter.BoardPresenter;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
