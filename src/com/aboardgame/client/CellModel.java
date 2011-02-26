@@ -1,5 +1,7 @@
 package com.aboardgame.client;
 
+import com.aboardgame.shared.CellState;
+
 public class CellModel {
 
     private CellState state = CellState.EMPTY;

@@ -1,10 +1,10 @@
-package com.aboardgame.client;
+package com.aboardgame.shared;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.aboardgame.client.CellState;
+import com.aboardgame.shared.CellState;
 
 public class CellStateTest {
 

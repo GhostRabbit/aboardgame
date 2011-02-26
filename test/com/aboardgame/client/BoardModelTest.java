@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 import com.aboardgame.client.view.CellView;
+import com.aboardgame.shared.CellState;
 
 
 public class BoardModelTest {

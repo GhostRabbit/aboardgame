@@ -1,4 +1,4 @@
-package com.aboardgame.client;
+package com.aboardgame.shared;
 
 public enum CellState {
     EMPTY, CROSS, RING

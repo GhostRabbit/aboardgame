@@ -1,6 +1,6 @@
 package com.aboardgame.client.view;
 
-import com.aboardgame.client.CellState;
+import com.aboardgame.shared.CellState;
 import com.google.gwt.user.client.ui.Image;
 
 public class CellViewimpl extends Image implements CellView {

@@ -1,6 +1,7 @@
 package com.aboardgame.client;
 
 import com.aboardgame.client.view.CellView;
+import com.aboardgame.shared.CellState;
 
 public class BoardModel {
 

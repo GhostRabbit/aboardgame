@@ -1,8 +1,8 @@
 package com.aboardgame.client.presenter;
 
 import com.aboardgame.client.BoardModel;
-import com.aboardgame.client.CellState;
 import com.aboardgame.client.view.CellView;
+import com.aboardgame.shared.CellState;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 
