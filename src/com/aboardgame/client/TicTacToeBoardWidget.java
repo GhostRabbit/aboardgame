@@ -9,44 +9,41 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class TicTacToeBoardWidget extends Composite implements TicTacToeBoard {
 
-    private final TicTacToeCell[] cells = new TicTacToeCell[3 * 3];
     private Panel panel;
 
     public TicTacToeBoardWidget() {
-        createAndLayoutComponents();
-        createPresenter();
+        createComponents();
         initWidget(panel);
-        addStyleName("TicTacToeBoard");
+        setStylePrimaryName("TicTacToeBoard");
     }
 
-    private void createAndLayoutComponents() {
+    private void createComponents() {
+        ClickHandler clickHandler = createClickHandler();
         panel = new VerticalPanel();
         for (int row = 0; row < 3; row++) {
             Panel hPanel = new HorizontalPanel();
             panel.add(hPanel);
             for (int col = 0; col < 3; col++) {
                 int index = col + row * 3;
-                TicTacToeCell cell = new TicTacToeCell(index);
+                TicTacToeCell cell = createCell(index, clickHandler);
                 hPanel.add(cell);
-                cells[index] = cell;
             }
         }
     }
 
-    private void createPresenter() {
+    private TicTacToeCell createCell(int index, ClickHandler clickHandler) {
+        TicTacToeCell cell = new TicTacToeCellWidget(index);
+        cell.addClickHandler(clickHandler);
+        return cell;
+    }
+
+    private ClickHandler createClickHandler() {
         final TicTacToePresenter presenter = new TicTacToePresenter(this);
-        ClickHandler clickHandler = new ClickHandler() {
+        return new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                presenter.sayHello(System.out);
+                presenter.onCellClick(event);
             }
         };
-        for (int i = 0; i < 9; i++) {
-            cells[i].addClickHandler(clickHandler);
-        }
     }
-    
-//    public TicTacToeCell getCell(int index) {
-//        return cells[index];
-//    }
 }

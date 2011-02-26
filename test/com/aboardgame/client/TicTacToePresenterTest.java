@@ -3,9 +3,9 @@ package com.aboardgame.client;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.io.PrintStream;
-
 import org.junit.Test;
+
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class TicTacToePresenterTest {
 
@@ -16,10 +16,26 @@ public class TicTacToePresenterTest {
     }
     
     @Test
-    public void sayHello() {
-        PrintStream out = mock(PrintStream.class);
-        new TicTacToePresenter(null).sayHello(out);
-        verify(out).println("Mupp");
+    public void cellClickShouldIncrementState() {
+        TicTacToeCell cell = mock(TicTacToeCell.class);
+        ClickEvent event = mock(ClickEvent.class);
+        when(event.getSource()).thenReturn(cell);
+        new TicTacToePresenter(null).onCellClick(event);
+        verify(cell).setState(CellState.CROSS);
+    }
+    
+    @Test
+    public void initialCellStateShouldBeEmpty() {
+        TicTacToeCell cell = mock(TicTacToeCell.class);
+        TicTacToePresenter presenter = new TicTacToePresenter(null);
+        presenter.initCell(cell);
+        verify(cell).setState(CellState.EMPTY);
+    }
+    
+    @Test
+    public void firstThreeStatesShouldDiffer() {
+        TicTacToePresenter presenter = new TicTacToePresenter(null);
+        
     }
 
 }

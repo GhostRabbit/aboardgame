@@ -1,6 +1,9 @@
 --- Mattias ---
-Skapa upp en vettig EntryPoint
-Byt implementation av TicTacToeCell
+uppdatera - git fetch
 
+Skapa upp en vettig EntryPoint
+Städa upp .TiTacToeCell-css
+
+fix package naming - all currently in client
 
 --- Joakim ---

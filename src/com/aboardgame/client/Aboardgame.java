@@ -154,7 +154,7 @@ public class Aboardgame implements EntryPoint {
 	}
 
     private void doSeriousInit() {
-        TicTacToeBoardWidget board = new TicTacToeBoardWidget();
+        TicTacToeBoard board = new TicTacToeBoardWidget();
         RootPanel.get("boardContainer").add(board);
     }
 }

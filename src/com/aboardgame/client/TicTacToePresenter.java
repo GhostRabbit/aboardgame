@@ -1,16 +1,22 @@
 package com.aboardgame.client;
 
-import java.io.PrintStream;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 public class TicTacToePresenter {
 
-    private final TicTacToeBoard board;
+    private TicTacToeModel model = new TicTacToeModel(); //To be injected
+    
+    private TicTacToeBoard board;
 
     public TicTacToePresenter(TicTacToeBoard board) {
         this.board = board;
     }
 
-    public void sayHello(PrintStream out) {
-        out.println("Mupp");
+    public void onCellClick(ClickEvent event) {
+        ((TicTacToeCell) event.getSource()).setState(CellState.CROSS);
+    }
+
+    public void initCell(TicTacToeCell cell) {
+        cell.setState(CellState.EMPTY);
     }
 }
