@@ -5,6 +5,8 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 public interface TicTacToeCell extends HasClickHandlers, IsWidget {
 
-    void setState(CellState state);
+    int getPosition();
+
+    void showState(CellState state);
 
 }

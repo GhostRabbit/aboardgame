@@ -4,12 +4,20 @@ import com.google.gwt.user.client.ui.Image;
 
 public class TicTacToeCellWidget extends Image implements TicTacToeCell {
 
-    public TicTacToeCellWidget(int id) {
+    private int position;
+
+    public TicTacToeCellWidget(int position) {
+        this.position = position;
         setStylePrimaryName("TicTacToeCell");
     }
 
     @Override
-    public void setState(CellState state) {
+    public int getPosition() {
+        return position;
+    }
+
+    @Override
+    public void showState(CellState state) {
         setStyleDependentName(state.toString(), true);
     }
 }

@@ -1,6 +1,7 @@
 package com.aboardgame.client;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
@@ -21,4 +22,23 @@ public class TicTacToeModelTest {
             assertEquals(CellState.EMPTY, cell.getState());
         }
     }
+    
+    @Test
+    public void cleanGetStateShouldReturnEmpty() {
+        TicTacToeModel model = new TicTacToeModel();
+        TicTacToeCell cell = mock(TicTacToeCell.class);
+        assertEquals(CellState.EMPTY, model.getState(cell));
+    }
+    
+    @Test
+    public void nextStateShouldUpdateModelOnlyOnce() {
+        TicTacToeModel model = new TicTacToeModel();
+        TicTacToeCell cell = mock(TicTacToeCell.class);
+        assertEquals(CellState.EMPTY, model.getState(cell));
+        assertEquals(CellState.CROSS, model.nextState(cell));
+        assertEquals(CellState.CROSS, model.getState(cell));
+        assertEquals(CellState.CROSS, model.nextState(cell));
+        assertEquals(CellState.CROSS, model.getState(cell));
+    }
+    
 }
