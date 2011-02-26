@@ -4,4 +4,3 @@ Byt implementation av TicTacToeCell
 
 
 --- Joakim ---
-Merge GhostRabbit to master
