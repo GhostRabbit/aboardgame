@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import com.aboardgame.client.BoardModel;
 import com.aboardgame.client.CellState;
-import com.aboardgame.client.CellView;
 import com.aboardgame.client.presenter.BoardPresenter;
+import com.aboardgame.client.view.CellView;
 import com.google.gwt.event.dom.client.ClickEvent;
 
 public class BoardPresenterTest {

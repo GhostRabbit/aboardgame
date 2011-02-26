@@ -1,5 +1,6 @@
-package com.aboardgame.client;
+package com.aboardgame.client.view;
 
+import com.aboardgame.client.CellState;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.IsWidget;
 

@@ -1,4 +1,4 @@
-package com.aboardgame.client;
+package com.aboardgame.client.view;
 
 import com.google.gwt.user.client.ui.IsWidget;
 

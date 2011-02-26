@@ -1,5 +1,7 @@
 package com.aboardgame.client;
 
+import com.aboardgame.client.view.CellView;
+
 public class BoardModel {
 
     final CellModel[] cells = new CellModel[] {
