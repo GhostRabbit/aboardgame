@@ -1,6 +1,5 @@
 package com.aboardgame.client;
 
-import com.aboardgame.client.event.BoardClickHandlerImpl;
 import com.aboardgame.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -155,20 +154,7 @@ public class Aboardgame implements EntryPoint {
 	}
 
     private void doSeriousInit() {
-        TicTacToeBoard board = new TicTacToeBoard();
-        board.addStyleName("TicTacToeBoard");
+        TicTacToeBoardWidget board = new TicTacToeBoardWidget();
         RootPanel.get("boardContainer").add(board);
-        BoardClickHandlerImpl clickHandler = new BoardClickHandlerImpl();
-        for (int col = 0; col < 3; col++) {
-            for (int row = 0; row < 3; row++) {
-                String label = "" + (col + row * 3);
-                TicTacToeCell cell = board.getCell(row, col);
-                cell.setStylePrimaryName("TicTacToeCell");
-                cell.setText(label);
-                cell.addClickHandler(clickHandler);
-            }
-        }
     }
-    
-
 }
