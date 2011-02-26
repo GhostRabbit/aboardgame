@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 
-public class TicTacToeModelTest {
+public class BoardModelTest {
 
     @Test
     public void newBoardModelShouldHave9CellModels() {

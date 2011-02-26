@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 
-public class TicTacToePresenterTest {
+public class BoardPresenterTest {
 
     @Test
     public void initialCellStateShouldObeyModel() {
