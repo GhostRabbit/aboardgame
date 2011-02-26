@@ -4,4 +4,7 @@ Byt implementation av TicTacToeCell
 
 
 --- Joakim ---
-Test online editing of scratchpad
+Remove .class files from version tracking
+Read up on using Maven with GWT projects
+Create pom.xml
+Remove jar files from git (requires Maven to be working)
