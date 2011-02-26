@@ -1,6 +1,6 @@
 package com.aboardgame.client;
 
-public class TicTacToeModel {
+public class BoardModel {
 
     final CellModel[] cells = new CellModel[] {
         new CellModel(),  
@@ -18,15 +18,15 @@ public class TicTacToeModel {
         return cells;
     }
 
-    public CellState getState(TicTacToeCell cell) {
+    public CellState getState(CellView cell) {
         return getModel(cell).getState();
     }
 
-    private CellModel getModel(TicTacToeCell cell) {
+    private CellModel getModel(CellView cell) {
         return cells[cell.getPosition()];
     }
 
-    public CellState nextState(TicTacToeCell cell) {
+    public CellState nextState(CellView cell) {
         if (CellState.EMPTY == getState(cell)) {
             getModel(cell).setState(CellState.CROSS);
         }

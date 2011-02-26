@@ -2,11 +2,11 @@ package com.aboardgame.client;
 
 import com.google.gwt.user.client.ui.Image;
 
-public class TicTacToeCellWidget extends Image implements TicTacToeCell {
+public class CellViewimpl extends Image implements CellView {
 
     private int position;
 
-    public TicTacToeCellWidget(int position) {
+    public CellViewimpl(int position) {
         this.position = position;
         setStylePrimaryName("TicTacToeCell");
     }

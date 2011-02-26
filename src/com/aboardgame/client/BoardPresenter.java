@@ -3,20 +3,20 @@ package com.aboardgame.client;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 
-public class TicTacToePresenter {
+public class BoardPresenter {
 
-    private TicTacToeModel model;
+    private BoardModel model;
     
-    public TicTacToePresenter(TicTacToeModel model) {
+    public BoardPresenter(BoardModel model) {
         this.model = model;
     }
 
     public void onCellClick(ClickEvent event) {
-        TicTacToeCell cell = (TicTacToeCell) event.getSource();
+        CellView cell = (CellView) event.getSource();
         cell.showState(model.nextState(cell));
     }
 
-    public void initCell(TicTacToeCell cell) {
+    public void initCell(CellView cell) {
         CellState state = model.getState(cell);
         cell.showState(state);
         cell.addClickHandler(createClickHandler());

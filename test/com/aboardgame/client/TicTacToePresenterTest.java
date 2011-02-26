@@ -10,22 +10,22 @@ public class TicTacToePresenterTest {
 
     @Test
     public void initialCellStateShouldObeyModel() {
-        TicTacToeCell cell = mock(TicTacToeCell.class);
-        TicTacToeModel model = mock (TicTacToeModel.class);
+        CellView cell = mock(CellView.class);
+        BoardModel model = mock (BoardModel.class);
         when(model.getState(cell)).thenReturn(CellState.RING);
-        TicTacToePresenter presenter = new TicTacToePresenter(model);
+        BoardPresenter presenter = new BoardPresenter(model);
         presenter.initCell(cell);
         verify(cell).showState(CellState.RING);
     }
     
     @Test
     public void cellClickShouldShowNextStateFromModel() {
-        TicTacToeCell cell = mock(TicTacToeCell.class);
+        CellView cell = mock(CellView.class);
         ClickEvent event = mock(ClickEvent.class);
         when(event.getSource()).thenReturn(cell);
-        TicTacToeModel model = mock(TicTacToeModel.class);
+        BoardModel model = mock(BoardModel.class);
         when(model.nextState(cell)).thenReturn(CellState.CROSS);
-        new TicTacToePresenter(model).onCellClick(event);
+        new BoardPresenter(model).onCellClick(event);
         verify(cell).showState(CellState.CROSS);
     }
 }

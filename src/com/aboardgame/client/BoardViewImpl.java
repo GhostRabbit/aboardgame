@@ -5,25 +5,25 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class TicTacToeBoardWidget extends Composite implements TicTacToeBoard {
+public class BoardViewImpl extends Composite implements BoardView {
 
     private Panel panel;
 
-    public TicTacToeBoardWidget(TicTacToeModel model) {
+    public BoardViewImpl(BoardModel model) {
         createComponents(model);
         initWidget(panel);
         setStylePrimaryName("TicTacToeBoard");
     }
 
-    private void createComponents(TicTacToeModel model) {
-        final TicTacToePresenter presenter = new TicTacToePresenter(model);
+    private void createComponents(BoardModel model) {
+        final BoardPresenter presenter = new BoardPresenter(model);
         panel = new VerticalPanel();
         for (int row = 0; row < 3; row++) {
             Panel hPanel = new HorizontalPanel();
             panel.add(hPanel);
             for (int col = 0; col < 3; col++) {
                 int index = col + row * 3;
-                TicTacToeCell cell = new TicTacToeCellWidget(index);
+                CellView cell = new CellViewimpl(index);
                 presenter.initCell(cell);
                 hPanel.add(cell);
             }

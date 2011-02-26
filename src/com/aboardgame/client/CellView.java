@@ -3,7 +3,7 @@ package com.aboardgame.client;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.IsWidget;
 
-public interface TicTacToeCell extends HasClickHandlers, IsWidget {
+public interface CellView extends HasClickHandlers, IsWidget {
 
     int getPosition();
 
