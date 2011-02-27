@@ -1,0 +1,50 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style>
+		.TicTacToeBoard {
+			margin-left: auto;
+    		margin-right: auto;
+			border-style: solid;
+			border-width: medium;
+			border-color: #aaaaaa;
+		}
+		
+		.TicTacToeCell {
+			display: block;
+			width: 40px;
+			height: 40px;
+		}
+		
+		.TicTacToeCell-RING {
+			background-image: url('images/ring.png');
+		}
+		
+		.TicTacToeCell-CROSS {
+			background-image: url('images/cross.png');
+		}
+	</ui:style>
+
+	<g:DecoratorPanel>
+		<g:VerticalPanel addStyleNames="{style.TicTacToeBoard}">
+			<g:HorizontalPanel>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+			</g:HorizontalPanel>
+			<g:HTML ui:field="boardContainer"></g:HTML>
+			<!--<g:FlexTable ui:field="contactsTable" addStyleNames="{style.contactsViewContactsFlexTable}"/> -->
+		</g:VerticalPanel>
+	</g:DecoratorPanel>
+</ui:UiBinder> 

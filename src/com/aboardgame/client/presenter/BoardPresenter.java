@@ -1,36 +1,31 @@
 package com.aboardgame.client.presenter;
 
-import com.aboardgame.client.BoardModel;
-import com.aboardgame.client.view.CellView;
-import com.aboardgame.shared.CellState;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.aboardgame.client.GameServiceAsync;
+import com.aboardgame.client.event.MoveEvent;
+import com.aboardgame.client.view.BoardView;
+import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.user.client.ui.HasWidgets;
 
-public class BoardPresenter {
+public class BoardPresenter implements Presenter, BoardView.Presenter {
 
-    private BoardModel model;
-    
-    public BoardPresenter(BoardModel model) {
-        this.model = model;
+    private final GameServiceAsync rpcService;
+    private final HandlerManager eventBus;
+    private final BoardView view;
+
+    public BoardPresenter(GameServiceAsync rpcService, HandlerManager eventBus, BoardView view) {
+        this.rpcService = rpcService;
+        this.eventBus = eventBus;
+        this.view = view;
+        this.view.setPresenter(this);
     }
 
-    public void onCellClick(ClickEvent event) {
-        CellView cell = (CellView) event.getSource();
-        cell.showState(model.nextState(cell));
+    @Override
+    public void onCellClicked() {
+        eventBus.fireEvent(new MoveEvent());
     }
 
-    public void initCell(CellView cell) {
-        CellState state = model.getState(cell);
-        cell.showState(state);
-        cell.addClickHandler(createClickHandler());
-    }
-    
-    private ClickHandler createClickHandler() {
-        return new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                onCellClick(event);
-            }
-        };
+    public void go(final HasWidgets container) {
+        container.clear();
+        container.add(view.asWidget());
     }
 }

@@ -1,8 +1,7 @@
 package com.aboardgame.client;
 
-import com.aboardgame.client.view.BoardView;
-import com.aboardgame.client.view.BoardViewImpl;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -15,12 +14,9 @@ public class Aboardgame implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 	    HandlerManager eventBus = new HandlerManager(null);
-	    AppController appViewer = new AppController(eventBus);
+	    GameServiceAsync rpcService = GWT.create(GameService.class);     
+	    AppController appViewer = new AppController(rpcService, eventBus);
 	    appViewer.go(RootPanel.get());
-	    
-        BoardModel model = new BoardModel();
-        model.fakeComplexState();
-        BoardView board = new BoardViewImpl(model);
-        RootPanel.get("boardContainer").add(board);
 	}
+
 }

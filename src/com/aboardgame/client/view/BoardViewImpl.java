@@ -1,34 +1,35 @@
 package com.aboardgame.client.view;
 
-import com.aboardgame.client.BoardModel;
 import com.aboardgame.client.presenter.BoardPresenter;
+import com.aboardgame.shared.BoardState;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class BoardViewImpl extends Composite implements BoardView {
 
     private Panel panel;
+    private BoardPresenter presenter;
+    private BoardState state;
 
-    public BoardViewImpl(BoardModel model) {
-        createComponents(model);
-        initWidget(panel);
-        setStylePrimaryName("TicTacToeBoard");
+    interface BoardViewUiBinder extends UiBinder<Widget, BoardViewImpl> {
     }
 
-    private void createComponents(BoardModel model) {
-        final BoardPresenter presenter = new BoardPresenter(model);
-        panel = new VerticalPanel();
-        for (int row = 0; row < 3; row++) {
-            Panel hPanel = new HorizontalPanel();
-            panel.add(hPanel);
-            for (int col = 0; col < 3; col++) {
-                int index = col + row * 3;
-                CellView cell = new CellViewimpl(index);
-                presenter.initCell(cell);
-                hPanel.add(cell);
-            }
-        }
+    private static BoardViewUiBinder uiBinder = GWT.create(BoardViewUiBinder.class);
+
+    public BoardViewImpl() {
+        initWidget(uiBinder.createAndBindUi(this));
+    }
+
+    @Override
+    public void setPresenter(BoardPresenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void setState(BoardState state) {
+        this.state = state;
     }
 }
