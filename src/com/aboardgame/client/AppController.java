@@ -2,7 +2,7 @@ package com.aboardgame.client;
 
 import com.aboardgame.client.event.MoveEvent;
 import com.aboardgame.client.event.MoveEventHandler;
-import com.aboardgame.client.presenter.BoardPresenter;
+import com.aboardgame.client.presenter.MovePresenter;
 import com.aboardgame.client.view.BoardView;
 import com.aboardgame.client.view.BoardViewImpl;
 import com.google.gwt.core.client.GWT;
@@ -46,20 +46,13 @@ public class AppController implements ValueChangeHandler<String> {
         String token = event.getValue();
 
         if (token != null) {
-            if (token.equals("show")) {
+            if (token.equals("showNewGame")) {
                 GWT.runAsync(new RunAsyncCallback() {
                     public void onFailure(Throwable caught) {
                     }
 
                     public void onSuccess() {
-                        // lazily initialize our views, and keep them around to
-                        // be reused
-                        //
-                        if (boardView == null) {
-                            boardView = new BoardViewImpl();
-
-                        }
-                        new BoardPresenter(rpcService, eventBus, boardView).go(container);
+                        new MovePresenter(rpcService, eventBus, getBoardView(), 0).go(container);
                     }
                 });
             } else if (token.equals("move")) {
@@ -68,16 +61,27 @@ public class AppController implements ValueChangeHandler<String> {
                     }
 
                     public void onSuccess() {
+                        new MovePresenter(rpcService, eventBus, getBoardView(), 0).go(container);
                     }
                 });
             }
         }
     }
 
+    private BoardView getBoardView() {
+        // lazily initialize our views, and keep them around to
+        // be reused
+        //
+        if (boardView == null) {
+            boardView = new BoardViewImpl();
+        }
+        return boardView;
+    }
+
     public void go(HasWidgets container) {
         this.container = container;
         if ("".equals(History.getToken())) {
-            History.newItem("show");
+            History.newItem("showNewGame");
         } else {
             History.fireCurrentHistoryState();
         }

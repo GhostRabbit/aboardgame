@@ -3,48 +3,58 @@ package com.aboardgame.client.presenter;
 import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.aboardgame.client.GameServiceAsync;
 import com.aboardgame.client.event.MoveEvent;
 import com.aboardgame.client.view.BoardView;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-public class BoardPresenterTest {
+public class MovePresenterTest {
 
+    private BoardView view;
+    private MovePresenter presenter;
+    private HandlerManager eventBus;
+    private GameServiceAsync rpcService;
+
+    @Before
+    public void setup() {
+        rpcService = mock(GameServiceAsync.class);
+        view = mock(BoardView.class);
+        eventBus = mock(HandlerManager.class);
+        presenter = new MovePresenter(rpcService, eventBus, view, 0);
+    }
+    
     @Test
-    public void boardPresenterShouldHookUpWithView() {
-        BoardView view = mock(BoardView.class);
-        BoardPresenter presenter = new BoardPresenter(null, null, view);
+    public void movePresenterShouldHookUpWithView() {
         verify(view).setPresenter(presenter);
     }
-    
+
     @Test
     public void onCellClickedShouldFireAMoveEvent() {
-        BoardView view = mock(BoardView.class);
-        HandlerManager eventBus = mock(HandlerManager.class);
-        new BoardPresenter(null, eventBus, view).onCellClicked();
+        presenter.onCellClicked();
         verify(eventBus).fireEvent((MoveEvent) anyObject());
     }
-    
+
     @Test
     public void goShouldClearContainer() {
-        BoardView view = mock(BoardView.class);
         HasWidgets container = mock(HasWidgets.class);
-        new BoardPresenter(null, null, view).go(container);
+        presenter.go(container);
         verify(container).clear();
     }
 
-    @Ignore //Can not test widget crap
+    @Ignore
+    // Can not test widget crap
     @Test
     public void goShouldAddViewToContainer() {
-        BoardView view = mock(BoardView.class);
         Widget widget = mock(Widget.class);
         when(view.asWidget()).thenReturn(widget);
         HasWidgets container = mock(HasWidgets.class);
-        new BoardPresenter(null, null, view).go(container);
+        presenter.go(container);
         verify(container).add(widget);
     }
 }

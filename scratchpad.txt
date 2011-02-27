@@ -1,9 +1,6 @@
 --- Mattias ---
-uppdatera - git fetch
+update - git fetch - does not seem to work
 
-Skapa upp en vettig EntryPoint
-Städa upp .TiTacToeCell-css
-
-fix package naming - all currently in client
+BoardViewImpl.ui.xml uses DecorationPanel - not pretty
 
 --- Joakim ---

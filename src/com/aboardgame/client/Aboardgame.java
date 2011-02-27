@@ -13,8 +13,8 @@ public class Aboardgame implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-	    HandlerManager eventBus = new HandlerManager(null);
 	    GameServiceAsync rpcService = GWT.create(GameService.class);     
+	    HandlerManager eventBus = new HandlerManager(null);
 	    AppController appViewer = new AppController(rpcService, eventBus);
 	    appViewer.go(RootPanel.get());
 	}

@@ -9,7 +9,7 @@ public class GameServiceImpl extends RemoteServiceServlet implements GameService
 
     private static final long serialVersionUID = 2356520060416646487L;
 
-    public BoardState getBoard(String id) {
+    public BoardState getBoardState(String gameId) {
         return new FakeBoardState();
     }
     

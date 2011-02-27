@@ -9,7 +9,7 @@ public class GameServiceImplTest {
     
     @Test
     public void getBoardGivesDataBack() {
-        assertNotNull(new GameServiceImpl().getBoard(null));
+        assertNotNull(new GameServiceImpl().getBoardState(null));
     }
 
 }

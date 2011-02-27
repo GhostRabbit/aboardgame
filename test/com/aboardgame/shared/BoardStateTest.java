@@ -12,17 +12,22 @@ public class BoardStateTest {
     @Test
     public void boardStateonlyAccepts9CellStates() {
         try {
-            new BoardState(null);
+            new BoardState(0, null);
             fail("Expected NPE");
         } catch (NullPointerException e) {}
         try {
-            new BoardState(new CellState[0]);
+            new BoardState(0, new CellState[0]);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {}
     }
 
     @Test
     public void boardStateRemembersState() {
-        assertNotNull(new BoardState(VALID_STATE).getCellStates());
+        assertNotNull(new BoardState(0, VALID_STATE).getCellStates());
+    }
+    
+    @Test
+    public void rememberGameId() {
+        assertEquals(2, new BoardState(2, VALID_STATE).getGameId());
     }
 }

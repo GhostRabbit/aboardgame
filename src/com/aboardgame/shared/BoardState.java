@@ -8,7 +8,10 @@ public class BoardState implements Serializable {
 
     private CellState[] states;
 
-    public BoardState(CellState[] states) {
+    private int gameId;
+
+    public BoardState(int gameId, CellState[] states) {
+        this.gameId = gameId;
         if (states.length != 9) {
             throw new IllegalArgumentException("Only accepts 9 CellStates");
         }
@@ -19,4 +22,7 @@ public class BoardState implements Serializable {
         return states;
     }
 
+    public int getGameId() {
+        return gameId;
+    }
 }

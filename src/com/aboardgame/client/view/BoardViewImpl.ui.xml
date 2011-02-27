@@ -10,38 +10,24 @@
 			border-width: medium;
 			border-color: #aaaaaa;
 		}
-		
-		.TicTacToeCell {
-			display: block;
-			width: 40px;
-			height: 40px;
-		}
-		
-		.TicTacToeCell-RING {
-			background-image: url('images/ring.png');
-		}
-		
-		.TicTacToeCell-CROSS {
-			background-image: url('images/cross.png');
-		}
 	</ui:style>
 
 	<g:DecoratorPanel>
 		<g:VerticalPanel addStyleNames="{style.TicTacToeBoard}">
 			<g:HorizontalPanel>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image ui:field="cell0" />
+				<g:Image ui:field="cell1" />
+				<g:Image ui:field="cell2" />
 			</g:HorizontalPanel>
 			<g:HorizontalPanel>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image ui:field="cell3" />
+				<g:Image ui:field="cell4" />
+				<g:Image ui:field="cell5" />
 			</g:HorizontalPanel>
 			<g:HorizontalPanel>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
-				<g:Image addStyleNames="{style.TicTacToeCell}"/>
+				<g:Image ui:field="cell6" />
+				<g:Image ui:field="cell7" />
+				<g:Image ui:field="cell8" />
 			</g:HorizontalPanel>
 			<g:HTML ui:field="boardContainer"></g:HTML>
 			<!--<g:FlexTable ui:field="contactsTable" addStyleNames="{style.contactsViewContactsFlexTable}"/> -->

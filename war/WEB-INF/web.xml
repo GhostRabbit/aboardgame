@@ -5,7 +5,16 @@
 
 <web-app>
   
-  <!-- Servlets -->
+  <servlet>
+    <servlet-name>gameServiceServlet</servlet-name>
+    <servlet-class>com.aboardgame.server.GameServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>gameServiceServlet</servlet-name>
+    <url-pattern>/aboardgame/gameService</url-pattern>
+  </servlet-mapping>
+  
   
   <!-- Default page to serve -->
   <welcome-file-list>
